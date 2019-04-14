@@ -9,7 +9,7 @@
                         v-model="phone"
                         label="手机号"
                         placeholder="请输入手机号"
-                        error-message="手机号格式错误"
+                        error-message=""
                 />
                 <van-field
                         v-model="sms"
@@ -36,7 +36,8 @@
         },
         data(){
             return{
-                phone:''
+                phone:'',
+                sms:''
             }
         }
     }

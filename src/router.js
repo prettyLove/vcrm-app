@@ -11,11 +11,6 @@ export default new Router({
     base: process.env.BASE_URL,
     routes: [
         {
-            path: "/",
-            name: "home",
-            component: Home
-        },
-        {
             path: "/login",
             name: "login",
             component: Login
@@ -26,7 +21,7 @@ export default new Router({
             component: Lock
         },
         {
-            path: "/about",
+            path: "/",
             name: "about",
             // route level code-splitting
             // this generates a separate chunk (about.[hash].js) for this route
