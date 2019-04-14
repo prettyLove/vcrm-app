@@ -3,11 +3,14 @@ import App from "./App.vue";
 import router from "./router";
 import store from "./store";
 import "./registerServiceWorker";
-import 'amfe-flexible';
+//import 'amfe-flexible/index';
+import 'lib-flexible/flexible.js'
+import 'normalize.css'
+
 Vue.config.productionTip = false;
 
 new Vue({
-  router,
-  store,
-  render: h => h(App)
+    router,
+    store,
+    render: h => h(App)
 }).$mount("#app");
