@@ -18,12 +18,12 @@
                         label="短信验证码"
                         placeholder="请输入短信验证码">
                     <van-button @click="getAuthCode" slot="button" size="small" type="info">
-                        <span v-show="sendAuthCode" class="auth_text auth_text_blue" style='cursor:pointer'>获取验证码(60)</span>
-                        <span v-show="!sendAuthCode" class="auth_text" style='cursor:pointer'> <span class="auth_text_blue" style='cursor:pointer'>{{auth_time}} </span> 秒之重新发送验证码</span>
+                        <span v-show="sendAuthCode" class="auth_text auth_text_blue" style='cursor:pointer'>获取验证码</span>
+                        <span v-show="!sendAuthCode" class="auth_text" style='cursor:pointer'> <span class="auth_text_blue" style='cursor:pointer'>{{auth_time}} </span> 秒后重发</span>
                     </van-button>
                 </van-field>
 
-                <van-button size="large" round  type="info" style="width: 90%">登录</van-button>
+                <van-button size="large" round  type="info" style="width: 90%" @click="login">登录</van-button>
             </van-cell-group>
         </div>
 
@@ -73,6 +73,10 @@
                         clearInterval(this.auth_timetimer);
                     }
                 }, 1000);
+            },
+            login(){
+                //todo 进行验证码判断，正确就调转到主页面
+                this.$router.push("/home")
             }
         }
     }
