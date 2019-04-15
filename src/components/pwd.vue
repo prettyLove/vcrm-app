@@ -7,7 +7,8 @@
         right: 0;
         left: 0;
         bottom: 0;
-        background: rgba(0, 0, 0, 0.6);
+        /*background: rgba(0, 0, 0, 0.6);*/
+        background: white;
     }
     .gesturePwd{
         position: fixed;
@@ -18,14 +19,15 @@
         left: 50%;
         -webkit-transform: translate(-50%,-50%);
         transform: translate(-50%,-50%);
-        background-color: #666;
+        /*background-color: #666;*/
         text-align: center;
         border-radius: 3px;
         overflow: hidden;
-        background-color: #000;
+        /*background-color: #000;*/
+        background-color: white;
     }
     .gestureTitle {
-        color: #87888a;
+        color: #000;
         margin-top: 85px;
         font-size: 20px;
         font-weight:normal;
@@ -39,11 +41,11 @@
 
             <div style="position: absolute;top:0;left:0;right:0;bottom:0;">
                 <h4 ref="gestureTitle" class="gestureTitle" >请绘制您的图形密码</h4>
-                <a ref="updatePassword" style="position: absolute;left: 5px;top: 5px;color:#fff;font-size: 16px;display:block;" @click="updatePassword()">重置密码</a>
+                <a ref="updatePassword" style="position: absolute;left: 5px;top: 5px;color:#000;font-size: 16px;display:block;" @click="updatePassword()">重置密码</a>
 
-                <a ref="updatePassword" style="position: absolute;right: 10px;top: 5px;color:#fff;font-size: 16px;display:block;" @click="closePwd()">关闭</a>
+                <a ref="updatePassword" style="position: absolute;right: 10px;top: 5px;color:#000;font-size: 16px;display:block;" @click="closePwd()">关闭</a>
 
-                <canvas ref="canvas" style="background-color:#000; display: inline-block; margin-top: 76px; width: 320px; height: 320px;"></canvas>
+                <canvas ref="canvas" style="background-color:white; display: inline-block; margin-top: 76px; width: 320px; height: 320px;"></canvas>
 
             </div>
         </div>
