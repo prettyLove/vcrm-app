@@ -7,9 +7,10 @@
             <van-cell-group>
                 <van-field
                         v-model="phone"
+                        center
+                        clearable
                         label="手机号"
                         placeholder="请输入手机号"
-                        error-message=""
                 />
                 <van-field
                         v-model="sms"
@@ -27,6 +28,28 @@
             </van-cell-group>
         </div>
 
+        <tabbar>
+            <tabbar-item>
+                <img slot="icon" src="../../public/img/barIcons/icon_nav_button.png">
+                <span slot="label">Wechat</span>
+            </tabbar-item>
+            <tabbar-item show-dot>
+                <img slot="icon" src="../../public/img/barIcons/icon_nav_msg.png">
+                <span slot="label">Message</span>
+            </tabbar-item>
+            <tabbar-item selected link="/component/demo">
+                <img slot="icon" src="../../public/img/barIcons/icon_nav_article.png">
+                <span slot="label">Explore</span>
+            </tabbar-item>
+            <tabbar-item badge="2">
+                <img slot="icon" src="../../public/img/barIcons/icon_nav_cell.png">
+                <span slot="label">News</span>
+            </tabbar-item>
+        </tabbar>
+        <group>
+            <span>微信手机格式化</span>
+            <x-input title="手机号码格式化" mask="999 9999 9999" v-model="phone" :max="13" is-type="china-mobile"></x-input>
+        </group>
         <div class="chooseLoginType">
             <span  @click="showPwd">切换登录</span>
         </div>
@@ -37,13 +60,18 @@
 <script>
     import {Button, CellGroup, Field} from 'vant'
     import pwd from '../components/pwd'
+    import {Tabbar,TabbarItem,XInput,Group} from 'vux'
     export default {
         name: "login",
         components: {
             [Button.name]: Button,
             [CellGroup.name]: CellGroup,
             [Field.name]: Field,
-            pwd
+            pwd,
+            [Tabbar.name]:Tabbar,
+            [TabbarItem.name]:TabbarItem,
+            [XInput.name]:XInput,
+            [Group.name]:Group
         },
         data(){
             return{

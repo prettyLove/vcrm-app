@@ -25,12 +25,12 @@ module.exports = {
         // extract:true,
         sourceMap: false
     },
-    // configureWebpack: config => {
-    //     require('vux-loader').merge(config, {
-    //         plugins: ['vux-ui']
-    //     })
-    //
-    // },
+    configureWebpack: config => {
+        require('vux-loader').merge(config, {
+            options: {},
+            plugins: ['vux-ui']
+        })
+    },
     lintOnSave:
     process.env.NODE_ENV === 'production', //是否在开发环境下通过 eslint-loader 在每次保存时 lint 代码。这个值会在 @vue/cli-plugin-eslint 被安装之后生效。
     //设置为 true 时，eslint-loader 会将 lint 错误输出为编译警告。默认情况下，警告仅仅会被输出到命令行，且不会使得编译失败。
