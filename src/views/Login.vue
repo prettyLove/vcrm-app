@@ -27,29 +27,10 @@
                 <van-button size="large" round  type="info" style="width: 90%" @click="login">登录</van-button>
             </van-cell-group>
         </div>
-
-        <tabbar>
-            <tabbar-item>
-                <img slot="icon" src="../../public/img/barIcons/icon_nav_button.png">
-                <span slot="label">Wechat</span>
-            </tabbar-item>
-            <tabbar-item show-dot>
-                <img slot="icon" src="../../public/img/barIcons/icon_nav_msg.png">
-                <span slot="label">Message</span>
-            </tabbar-item>
-            <tabbar-item selected link="/component/demo">
-                <img slot="icon" src="../../public/img/barIcons/icon_nav_article.png">
-                <span slot="label">Explore</span>
-            </tabbar-item>
-            <tabbar-item badge="2">
-                <img slot="icon" src="../../public/img/barIcons/icon_nav_cell.png">
-                <span slot="label">News</span>
-            </tabbar-item>
-        </tabbar>
-        <group>
-            <span>微信手机格式化</span>
-            <x-input title="手机号码格式化" mask="999 9999 9999" v-model="phone" :max="13" is-type="china-mobile"></x-input>
-        </group>
+        <!--<group>-->
+            <!--<span>微信手机格式化</span>-->
+            <!--<x-input title="手机号码格式化" mask="999 9999 9999" v-model="phone" :max="13" is-type="china-mobile"></x-input>-->
+        <!--</group>-->
         <div class="chooseLoginType">
             <span  @click="showPwd">切换登录</span>
         </div>
@@ -60,7 +41,7 @@
 <script>
     import {Button, CellGroup, Field} from 'vant'
     import pwd from '../components/pwd'
-    import {Tabbar,TabbarItem,XInput,Group} from 'vux'
+    import {XInput,Group} from 'vux'
     export default {
         name: "login",
         components: {
@@ -68,8 +49,6 @@
             [CellGroup.name]: CellGroup,
             [Field.name]: Field,
             pwd,
-            [Tabbar.name]:Tabbar,
-            [TabbarItem.name]:TabbarItem,
             [XInput.name]:XInput,
             [Group.name]:Group
         },
