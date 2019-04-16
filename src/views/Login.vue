@@ -117,10 +117,14 @@
     .login .loginbtn{
         background-color: #23ade3!important;
         color:#fff;
+        margin-top:40px;
     }
     .van-button--default{
        background-color: #23ade3!important;
         color:#fff; 
+    }
+    .van-cell-group{
+        margin-top:40px;
     }
 
 </style>
