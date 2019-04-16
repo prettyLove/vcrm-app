@@ -16,7 +16,7 @@
                         v-model="sms"
                         center
                         clearable
-                        label="短信验证码"
+                        label="验证码"
                         placeholder="请输入短信验证码">
                     <van-button @click="getAuthCode" slot="button" size="small">
                         <span v-show="sendAuthCode" class="auth_text auth_text_blue " style='cursor:pointer'>获取验证码</span>
