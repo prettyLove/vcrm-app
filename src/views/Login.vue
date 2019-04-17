@@ -109,10 +109,13 @@
         padding-bottom: 20px;
     }
     .chooseLoginType{
-        position: absolute;
+        /* position: absolute;
         bottom: 5px;
-        left: 5px;
+        left: 5px; */
         font-size: 13px;
+        position: fixed;
+        bottom:10px;
+        left: 10px;
     }
     .login .loginbtn{
         background-color: #23ade3!important;
@@ -125,6 +128,10 @@
     }
     .van-cell-group{
         margin-top:40px;
+    }
+    .van-cell__title div{
+        display: flex;
+        align-items: center
     }
 
 </style>
