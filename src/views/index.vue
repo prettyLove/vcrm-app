@@ -2,7 +2,7 @@
     <div class="app_index">
         <XHeader>CRM</XHeader>
         <div class="bg" style="">
-            <img src="../../public/images/login/timg.jpg" style="width:100%;height:120px"/>
+            <img src="../../public/images/login/timg.jpg" style="width:100%;height:160px"/>
         </div>
         <van-cell-group>
             <van-cell is-link >

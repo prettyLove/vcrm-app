@@ -1,7 +1,7 @@
 <template class=""bg>
     <div class="app_clue">
         <XHeader>线索</XHeader>
-        <van-row>
+        <van-row type="flex" justify="space-around">
             <van-col span="6">
                 <div class="bg bg_first">
                     <i class="fa fa-ils" aria-hidden="true"></i>
@@ -29,7 +29,7 @@
                 <div class="font_d">即将超时</div>
             </van-col>
         </van-row>
-         <van-row>
+         <van-row type="flex" justify="space-around">
             <van-col span="6">
                 <div class="bg font_tuandui">
                     <i class="fa fa-users" aria-hidden="true"></i>
@@ -57,55 +57,20 @@
                 <div class="font_d">录入线索</div>
             </van-col>
         </van-row>
-        <van-row gutter="20" class=" pd_v">
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">线索总数</span>
-                <div class="size_com">183</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">本周新增</span>
-                <div class="size_com">21</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">本月新增</span>
-                <div class="size_com">67</div>
-            </van-col>
-        </van-row>
-         <van-row gutter="20" class="bg_v pd_v">
-            <van-col span="8" class="padding_left">
-                <i class="fa fa-square font_qi" aria-hidden="true"></i>
-                <span class="font_com ">七天未跟进</span>
-                <div class="size_com">9</div>
-            </van-col>
-            <van-col span="8" class="padding_l">
-                <i class="fa fa-square font_shisi" aria-hidden="true"></i>
-                <span class="font_com ">14天未跟进</span>
-                <div class="size_com">5</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square font_ji" aria-hidden="true"></i>
-                <span class="font_com ">即将超时</span>
-                <div class="size_com">3</div>
-            </van-col>
-        </van-row>
+        <!-- 已封装好的组件 -->
+        <clueg></clueg>
     </div>
 </template>
 <script>
-    import {
-        XHeader
-    } from 'vux';
-    import {
-        Row,
-        Col
-    } from 'vant';
+    import { XHeader} from 'vux';
+    import { Row,Col} from 'vant';
+    import clueg from '../components/clue_g.vue'
     export default {
         components: {
             XHeader,
             [Row.name]: Row,
             [Col.name]: Col,
+            clueg,
         },
         data() {
             return {}
@@ -122,10 +87,12 @@
 <style scoped>
     .bg{ background-color: #eee;}
     .app_clue {
-        /* padding-top: 20px; */
-        /* padding-bottom: 20px; */
+         /* padding-top: 20px;  */
+         padding-bottom: 20px; 
     }
-
+    .pd_v{
+        margin-top:15px;
+    }
     .vux-header {
         background-color: #23ade3 !important;
     }
@@ -174,38 +141,7 @@
    .font_d,.font_shangbao{
         padding-top: 7px;
         font-size: 14px
-   }
-   .fa-square{
-       padding-right: 5px;
-       color: #23ade3;
-
-   }
-   .font_com{
-       font-size: 16px;
-   }
-   .size_com{
-       font-size:20px;
-       padding-top:5px;
-   }
-   .padding_left{
-       padding-left: 20px!important;
-   }
-   .padding_l{
-       padding-left: 18px!important;
-
-   }
-   .font_qi{color:#ff976a!important;}
-   .font_shisi{color:#f44!important;}
-   .font_ji{color:#ffe06a!important;}
-   /* .bg_v{background-color: rgb(242,244,247);} */
-   .pd_v{margin-top: 30px;
-         background-color: #fff;
-   }
-   .bg_v{
-       margin-top:0px;
-   }
-
-    
+   } 
 </style>
 <style>
     .vux-header .vux-header-left a {

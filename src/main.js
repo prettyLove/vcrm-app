@@ -6,6 +6,7 @@ import "./registerServiceWorker";
 //import 'amfe-flexible/index';
 import 'lib-flexible/flexible.js'
 import 'normalize.css'
+import 'font-awesome/css/font-awesome.min.css'
 
 Vue.config.productionTip = false;
 
