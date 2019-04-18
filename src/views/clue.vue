@@ -57,7 +57,7 @@
                 <div class="font_d">录入线索</div>
             </van-col>
         </van-row>
-        <van-row gutter="20" class="bg_v pd_v">
+        <van-row gutter="20" class=" pd_v">
             <van-col span="8">
                 <i class="fa fa-square" aria-hidden="true"></i>
                 <span class="font_com">线索总数</span>
@@ -74,7 +74,7 @@
                 <div class="size_com">67</div>
             </van-col>
         </van-row>
-         <van-row gutter="20" class="bg_v">
+         <van-row gutter="20" class="bg_v pd_v">
             <van-col span="8" class="padding_left">
                 <i class="fa fa-square font_qi" aria-hidden="true"></i>
                 <span class="font_com ">七天未跟进</span>
@@ -109,14 +109,21 @@
         },
         data() {
             return {}
-        }
+        },
+         mounted() {//动态设置单个组件页面的背景颜色
+    document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
+  },
+  beforeDestroy() {
+    document.querySelector('body').removeAttribute('style')
+  },
+
     }
 </script>
 <style scoped>
     .bg{ background-color: #eee;}
     .app_clue {
-        padding-top: 20px;
-        padding-bottom: 20px;
+        /* padding-top: 20px; */
+        /* padding-bottom: 20px; */
     }
 
     .vux-header {
@@ -191,7 +198,12 @@
    .font_shisi{color:#f44!important;}
    .font_ji{color:#ffe06a!important;}
    /* .bg_v{background-color: rgb(242,244,247);} */
-   .pd_v{margin-top: 30px;}
+   .pd_v{margin-top: 30px;
+         background-color: #fff;
+   }
+   .bg_v{
+       margin-top:0px;
+   }
 
     
 </style>
