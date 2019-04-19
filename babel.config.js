@@ -9,6 +9,13 @@ module.exports = {
         ["import", {
             "libraryName": "mand-mobile",
             "libraryDirectory": "lib"
-        }]
+        }],
+        [
+            "component",
+            {
+                "libraryName": "mint-ui",
+                "style": true
+            }
+        ]
     ]
 };

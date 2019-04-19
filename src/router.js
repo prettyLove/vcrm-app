@@ -5,6 +5,9 @@ import Home from './views/Home.vue';
 import index from './views/index.vue';
 import clue from './views/clue.vue';
 
+/**header 组件**/
+//import indexHeader from './components/header/indexHeader.vue';
+
 Vue.use(Router);
 
 export default new Router({
@@ -25,7 +28,15 @@ export default new Router({
                 {
                     path: 'index',
                     name: 'index',
-                    component: index
+                    component: index,
+                    // redirect: '/home/indexHeader/index',
+                    // children:[
+                    //     {
+                    //         path: 'index',
+                    //         name: 'index',
+                    //         component: index
+                    //     }
+                    // ]
                 },
                 {
                     path: 'clue',

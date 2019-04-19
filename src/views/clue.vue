@@ -1,6 +1,10 @@
-<template class=""bg>
+<template class="bg">
     <div class="app_clue">
-        <XHeader>线索</XHeader>
+        <div style="position: fixed;">
+            <van-nav-bar title="线索" left-text="返回" left-arrow>
+                <van-icon name="search" slot="right"/>
+            </van-nav-bar>
+        </div>
         <van-row>
             <van-col span="6">
                 <div class="bg bg_first">
@@ -29,7 +33,7 @@
                 <div class="font_d">即将超时</div>
             </van-col>
         </van-row>
-         <van-row>
+        <van-row>
             <van-col span="6">
                 <div class="bg font_tuandui">
                     <i class="fa fa-users" aria-hidden="true"></i>
@@ -44,7 +48,7 @@
             </van-col>
             <van-col span="6">
                 <div class="bg bg_chongcha">
-                    <i class="fa fa-search" aria-hidden="true"></i> 
+                    <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
                 <div class="font_d">重查</div>
             </van-col>
@@ -57,7 +61,7 @@
                 <div class="font_d">录入线索</div>
             </van-col>
         </van-row>
-        <van-row gutter="20" class=" pd_v">
+        <van-row class=" pd_v">
             <van-col span="8">
                 <i class="fa fa-square" aria-hidden="true"></i>
                 <span class="font_com">线索总数</span>
@@ -74,7 +78,7 @@
                 <div class="size_com">67</div>
             </van-col>
         </van-row>
-         <van-row gutter="20" class="bg_v pd_v">
+        <van-row class="bg_v pd_v">
             <van-col span="8" class="padding_left">
                 <i class="fa fa-square font_qi" aria-hidden="true"></i>
                 <span class="font_com ">七天未跟进</span>
@@ -95,32 +99,36 @@
 </template>
 <script>
     import {
-        XHeader
-    } from 'vux';
-    import {
         Row,
-        Col
+        Col,
+        NavBar,
+        Icon
     } from 'vant';
+
     export default {
         components: {
-            XHeader,
             [Row.name]: Row,
             [Col.name]: Col,
+            [NavBar.name]: NavBar,
+            [Icon.name]: Icon
         },
         data() {
             return {}
         },
-         mounted() {//动态设置单个组件页面的背景颜色
-    document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
-  },
-  beforeDestroy() {
-    document.querySelector('body').removeAttribute('style')
-  },
+        mounted() {//动态设置单个组件页面的背景颜色
+            document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
+        },
+        beforeDestroy() {
+            document.querySelector('body').removeAttribute('style')
+        },
 
     }
 </script>
 <style scoped>
-    .bg{ background-color: #eee;}
+    .bg {
+        background-color: #eee;
+    }
+
     .app_clue {
         /* padding-top: 20px; */
         /* padding-bottom: 20px; */
@@ -130,82 +138,109 @@
         background-color: #23ade3 !important;
     }
 
-    .vux-header>.vux-header-left>.vux-header-back {
+    .vux-header > .vux-header-left > .vux-header-back {
         color: #fff !important;
     }
 
     .van-row {
         padding-top: 40px;
     }
-    .bg{
+
+    .bg {
         width: 60px;
         height: 60px;
-        margin-left: 16px;
+        /*margin-left: 16px;*/
         border-radius: 40%;
         text-align: center;
     }
-    .bg_first{
-       background-color: #23ade3;
+
+    .bg_first {
+        background-color: #23ade3;
     }
-    .bg_sp{
-        background-color:#ff976a;
+
+    .bg_sp {
+        background-color: #ff976a;
     }
-    .bg_p{
-        background-color:#f44 ;
+
+    .bg_p {
+        background-color: #f44;
     }
-    .bg_fd{
+
+    .bg_fd {
         background-color: #ffe06a;
     }
-    .bg_sb{
-        background-color:#6b6aff;
+
+    .bg_sb {
+        background-color: #6b6aff;
     }
-    .font_tuandui{
+
+    .font_tuandui {
         background-color: #07c160;
     }
-    .bg_chongcha{
+
+    .bg_chongcha {
         background-color: #07c18b;
     }
-    .bg .fa{
+
+    .bg .fa {
         text-align: center;
         line-height: 60px;
         color: #fff;
         font-size: 25px
     }
-   .font_d,.font_shangbao{
+
+    .font_d, .font_shangbao {
         padding-top: 7px;
         font-size: 14px
-   }
-   .fa-square{
-       padding-right: 5px;
-       color: #23ade3;
+    }
 
-   }
-   .font_com{
-       font-size: 16px;
-   }
-   .size_com{
-       font-size:20px;
-       padding-top:5px;
-   }
-   .padding_left{
-       padding-left: 20px!important;
-   }
-   .padding_l{
-       padding-left: 18px!important;
+    .fa-square {
+        padding-right: 5px;
+        color: #23ade3;
 
-   }
-   .font_qi{color:#ff976a!important;}
-   .font_shisi{color:#f44!important;}
-   .font_ji{color:#ffe06a!important;}
-   /* .bg_v{background-color: rgb(242,244,247);} */
-   .pd_v{margin-top: 30px;
-         background-color: #fff;
-   }
-   .bg_v{
-       margin-top:0px;
-   }
+    }
 
-    
+    .font_com {
+        font-size: 16px;
+    }
+
+    .size_com {
+        font-size: 20px;
+        padding-top: 5px;
+    }
+
+    .padding_left {
+        padding-left: 20px !important;
+    }
+
+    .padding_l {
+        padding-left: 18px !important;
+
+    }
+
+    .font_qi {
+        color: #ff976a !important;
+    }
+
+    .font_shisi {
+        color: #f44 !important;
+    }
+
+    .font_ji {
+        color: #ffe06a !important;
+    }
+
+    /* .bg_v{background-color: rgb(242,244,247);} */
+    .pd_v {
+        margin-top: 30px;
+        background-color: #fff;
+    }
+
+    .bg_v {
+        margin-top: 0px;
+    }
+
+
 </style>
 <style>
     .vux-header .vux-header-left a {

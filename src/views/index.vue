@@ -1,7 +1,8 @@
 <template>
     <div class="app_index">
-        <XHeader>CRM</XHeader>
-        <div class="bg" style="">
+        <mt-header fixed title="CRM"></mt-header>
+        <!--<XHeader>CRM</XHeader>-->
+        <div class="bg" style="margin-top: 1.0667rem">
             <img src="../../public/images/login/timg.jpg" style="width:100%;height:120px"/>
         </div>
         <van-cell-group>
@@ -41,8 +42,9 @@
                 <span class="custom-text">联系人</span>
             </div>
             </van-cell>
-            </van-cell-group>
-            <van-cell-group class="second">
+        </van-cell-group>
+
+        <van-cell-group class="second">
             <van-cell is-link >
             <div slot="title" border="1px solid">
                 <i class="fa fa-grav fa-2x shangji_f" aria-hidden="true"></i>
@@ -55,13 +57,23 @@
                 <span class="custom-text">我的团队</span>
             </div>
             </van-cell>
-            </van-cell-group>
-            <van-cell-group class="second">
-            <van-cell is-link >
-            <div slot="title" border="1px solid">
-                <i class="fa fa-file-image-o fa-2x ziliao_f" aria-hidden="true"></i>
-                <span class="custom-text">产品资料</span>
-            </div>
+        </van-cell-group>
+
+        <van-cell-group class="second">
+            <van-cell is-link>
+                <div slot="title" border="1px solid">
+                    <i class="fa fa-file-image-o fa-2x ziliao_f" aria-hidden="true"></i>
+                    <span class="custom-text">产品资料</span>
+                </div>
+            </van-cell>
+        </van-cell-group>
+
+        <van-cell-group class="second">
+            <van-cell is-link>
+                <div slot="title" border="1px solid">
+                    <i class="fa fa-file-image-o fa-2x ziliao_f" aria-hidden="true"></i>
+                    <span class="custom-text">产品资料111</span>
+                </div>
             </van-cell>
         </van-cell-group>
     </div>
@@ -70,12 +82,15 @@
     import {
         Row,Col,Cell, CellGroup,Icon
     } from 'vant';
-    import {
-        XHeader
-    } from 'vux';
+    import  {Header} from 'mint-ui'
     export default {
         components: {
-            Row,Col,XHeader,[Cell.name]:Cell,[CellGroup.name]:CellGroup,[Icon.name]:Icon,
+            [Row.name]:Row,
+            [Col.name]:Col,
+            [Cell.name]:Cell,
+            [CellGroup.name]:CellGroup,
+            [Icon.name]:Icon,
+            [Header.name]:Header
 
         },
         data() {
