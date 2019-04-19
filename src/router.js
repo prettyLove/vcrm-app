@@ -11,11 +11,38 @@ Vue.use(Router);
 export default new Router({
     mode: "history",
     base: process.env.BASE_URL,
+    //mode: "history",
+    //base: process.env.BASE_URL,
     routes: [
         { path: "/", name: "login",component: Login},
         {path: "/home",name: "home",component: Home},
         {path:"/index", name:"index",component:index},
         {path:"/clue",name:"clue",component:clue},
+        {
+            path: "/",
+            name: "login",
+            component: Login
+        },
+        {
+            path: "/home",
+            name: "home",
+            component: Home,
+            redirect: '/home/index',
+            children: [
+                {
+                    path: 'index',
+                    name: 'index',
+                    component: index
+                },
+                {
+                    path: 'clue',
+                    name: 'clue',
+                    component: clue
+                }
+            ]
+        },
+        //{path: "/index", name: "index", component: index},
+        //{path: "/clue", name: "clue", component: clue},
         {path:"/clue_group",name:"clue_group",component:clue_group},
     ]
 });
