@@ -1,30 +1,30 @@
 <template class="bg">
     <div class="app_clue">
-        <div style="position: fixed;">
-            <van-nav-bar title="线索" left-text="返回" left-arrow>
-                <van-icon name="search" slot="right"/>
+        <div>
+            <van-nav-bar title="线索" left-text="返回" @click="jump" left-arrow >
+                <van-icon name="search" slot="right" />
             </van-nav-bar>
         </div>
-        <van-row>
-            <van-col span="6">
+        <van-row type="flex" justify="space-around">
+            <van-col span="4">
                 <div class="bg bg_first">
                     <i class="fa fa-ils" aria-hidden="true"></i>
                 </div>
                 <div class="font_d">我的线索</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_sp">
                     <span class="fa">7</span>
                 </div>
                 <div class="font_d">7天未跟</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_p">
                     <span class="fa">14</span>
                 </div>
                 <div class="font_d">14天未跟</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_fd">
                     <span class="fa">
                         <i class="fa fa-hourglass-end" aria-hidden="true"></i>
@@ -33,26 +33,26 @@
                 <div class="font_d">即将超时</div>
             </van-col>
         </van-row>
-        <van-row>
-            <van-col span="6">
+        <van-row type="flex" justify="space-around">
+            <van-col span="4">
                 <div class="bg font_tuandui">
                     <i class="fa fa-users" aria-hidden="true"></i>
                 </div>
                 <div class="font_d">团队线索</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_sb">
                     <i class="fa fa-cloud-upload" aria-hidden="true"></i>
                 </div>
                 <div class="font_d">我上报的</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_chongcha">
                     <i class="fa fa-search" aria-hidden="true"></i>
                 </div>
                 <div class="font_d">重查</div>
             </van-col>
-            <van-col span="6">
+            <van-col span="4">
                 <div class="bg bg_first">
                     <span class="fa">
                         <i class="fa fa-plus" aria-hidden="true"></i>
@@ -61,40 +61,8 @@
                 <div class="font_d">录入线索</div>
             </van-col>
         </van-row>
-        <van-row class=" pd_v">
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">线索总数</span>
-                <div class="size_com">183</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">本周新增</span>
-                <div class="size_com">21</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square" aria-hidden="true"></i>
-                <span class="font_com">本月新增</span>
-                <div class="size_com">67</div>
-            </van-col>
-        </van-row>
-        <van-row class="bg_v pd_v">
-            <van-col span="8" class="padding_left">
-                <i class="fa fa-square font_qi" aria-hidden="true"></i>
-                <span class="font_com ">七天未跟进</span>
-                <div class="size_com">9</div>
-            </van-col>
-            <van-col span="8" class="padding_l">
-                <i class="fa fa-square font_shisi" aria-hidden="true"></i>
-                <span class="font_com ">14天未跟进</span>
-                <div class="size_com">5</div>
-            </van-col>
-            <van-col span="8">
-                <i class="fa fa-square font_ji" aria-hidden="true"></i>
-                <span class="font_com ">即将超时</span>
-                <div class="size_com">3</div>
-            </van-col>
-        </van-row>
+        <!-- 调用已封装好的组件 -->
+         <clueg></clueg>
     </div>
 </template>
 <script>
@@ -104,16 +72,22 @@
         NavBar,
         Icon
     } from 'vant';
-
+   import clueg from '../components/clue_g.vue'
     export default {
         components: {
             [Row.name]: Row,
             [Col.name]: Col,
             [NavBar.name]: NavBar,
-            [Icon.name]: Icon
+            [Icon.name]: Icon,
+            clueg, 
         },
         data() {
             return {}
+        },
+        methods:{
+            jump(){
+               this.$router.push("/index");
+            },
         },
         mounted() {//动态设置单个组件页面的背景颜色
             document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')

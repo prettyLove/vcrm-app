@@ -3,7 +3,7 @@
         <mt-header fixed title="CRM"></mt-header>
         <!--<XHeader>CRM</XHeader>-->
         <div class="bg" style="margin-top: 1.0667rem">
-            <img src="../../public/images/login/timg.jpg" style="width:100%;height:120px"/>
+            <img src="../../public/images/login/timg.jpg" style="width:100%;height:160px"/>
         </div>
         <van-cell-group>
             <van-cell is-link >
@@ -68,14 +68,14 @@
             </van-cell>
         </van-cell-group>
 
-        <van-cell-group class="second">
+        <!-- <van-cell-group class="second">
             <van-cell is-link>
                 <div slot="title" border="1px solid">
                     <i class="fa fa-file-image-o fa-2x ziliao_f" aria-hidden="true"></i>
                     <span class="custom-text">产品资料111</span>
                 </div>
             </van-cell>
-        </van-cell-group>
+        </van-cell-group> -->
     </div>
 </template>
 <script>

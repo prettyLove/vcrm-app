@@ -6,7 +6,7 @@
                 <van-tabbar v-model="active">
                     <van-tabbar-item icon="home-o" to="/home/index">CRM</van-tabbar-item>
                     <van-tabbar-item icon="search" dot to="/home/clue">线索</van-tabbar-item>
-                    <van-tabbar-item icon="friends-o" info="5">标签</van-tabbar-item>
+                    <van-tabbar-item icon="friends-o" info="5" to="/clue_group">团队线索</van-tabbar-item>
                     <van-tabbar-item icon="setting-o" info="20">标签</van-tabbar-item>
                 </van-tabbar>
         </div>
@@ -30,9 +30,6 @@
 </script>
 
 <style scoped>
-    .box{
-        position: relative;height: 100%;
-    }
     .roll {
         padding-bottom: 1.3334rem;
     }
