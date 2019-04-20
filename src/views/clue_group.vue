@@ -10,68 +10,13 @@
         </van-cell-group>
         <!-- 已封装好的组件 -->
         <clueg></clueg>
-        <van-cell-group>
+        <van-cell-group v-for="(item,i) of users" :key="i">
             <van-cell is-link class="text_l">
             <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
+                <img :src="item.img" style="width:20%" class="img">
+                <span class="custom-text" v-html="item.name"></span>
             </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-        <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-                
-            </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-        <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-            </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-        <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-            </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-         <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-            </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-         <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-            </div>
-            <div>555</div>
-            </van-cell>
-        </van-cell-group>
-         <van-cell-group>
-            <van-cell is-link class="text_l">
-            <div slot="title" border="1px solid" class="bf">
-                <img src="../../public/images/login/01.jpg" style="width:20%" class="img">
-                <span class="custom-text">崔大梦</span>
-            </div>
-            <div>555</div>
+            <div>{{item.number |random}}</div>
             </van-cell>
         </van-cell-group>
           <van-cell-group class="has_bordert">
@@ -99,14 +44,38 @@ export default {
             clueg, 
         },
     data(){
-        return{}
+        return{
+            users:[
+                {'name':'张三',img:'images/login/01.jpg',number:0},
+                {'name':'李四',img:'images/login/bg.jpg',number:0},
+                {'name':'崔梦',img:'images/login/01.jpg',number:0},
+                {'name':'李丽',img:'images/login/timg.jpg',number:0},
+                {'name':'汤姆',img:'images/login/01.jpg',number:0},
+                {'name':'托尼',img:'images/login/bg.jpg',number:0},
+                {'name':'美眉',img:'images/login/timg.jpg',number:0},
+            ],
+        }
     },
+    methods:{
+        
+    },
+
+    // created(){
+    //     for (const item of this.users) {
+    //         item.number= Math.ceil(Math.random()*500);
+    //     }
+    // },
     mounted() {//动态设置单个组件页面的背景颜色
-    document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
+         document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
     },
     beforeDestroy() {
         document.querySelector('body').removeAttribute('style')
     },
+    filters:{
+        random(){
+            return Math.ceil(Math.random()*500);
+        }
+    }
 }
 </script>
 <style scoped>

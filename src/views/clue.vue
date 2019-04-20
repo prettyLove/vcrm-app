@@ -1,16 +1,16 @@
 <template class="bg">
     <div class="app_clue">
-        <div>
-            <van-nav-bar title="线索" left-text="返回" @click="jump" left-arrow >
+        <div  @click="jump" >
+            <van-nav-bar title="线索" left-text="返回" left-arrow class="bg_h">
                 <van-icon name="search" slot="right" />
             </van-nav-bar>
         </div>
         <van-row type="flex" justify="space-around">
-            <van-col span="4">
-                <div class="bg bg_first">
-                    <i class="fa fa-ils" aria-hidden="true"></i>
+            <van-col span="4" >
+                <div class="bg font_tuandui" @click="gjump">
+                    <i class="fa fa-users" aria-hidden="true"></i>
                 </div>
-                <div class="font_d">我的线索</div>
+                <div class="font_d" @click="gjump">团队线索</div>
             </van-col>
             <van-col span="4">
                 <div class="bg bg_sp">
@@ -35,10 +35,10 @@
         </van-row>
         <van-row type="flex" justify="space-around">
             <van-col span="4">
-                <div class="bg font_tuandui">
-                    <i class="fa fa-users" aria-hidden="true"></i>
+                <div class="bg bg_first">
+                    <i class="fa fa-ils" aria-hidden="true"></i>
                 </div>
-                <div class="font_d">团队线索</div>
+                <div class="font_d">我的线索</div>
             </van-col>
             <van-col span="4">
                 <div class="bg bg_sb">
@@ -88,6 +88,9 @@
             jump(){
                this.$router.push("/index");
             },
+            gjump(){
+                this.$router.push("/clue_group")
+            }
         },
         mounted() {//动态设置单个组件页面的背景颜色
             document.querySelector('body').setAttribute('style', 'background-color:#f8f8f8')
@@ -213,7 +216,7 @@
     .bg_v {
         margin-top: 0px;
     }
-
+  
 
 </style>
 <style>
@@ -231,4 +234,17 @@
     .vux-header .vux-header-left {
         color: #fff !important;
     }
+      .bg_h{
+       background-color: #26a2ff!important; 
+  
+    }
+    .van-nav-bar__arrow,.van-nav-bar__title,.van-nav-bar__text,.van-icon-search{
+        color:#fff!important;
+    }
+
+
+    /* [data-v-7c4bc026]{
+        background-color: #23ade3;
+    }
+     */
 </style>

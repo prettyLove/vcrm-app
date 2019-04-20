@@ -5,6 +5,8 @@ import Home from './views/Home.vue';
 import index from './views/index.vue';
 import clue from './views/clue.vue';
 import clue_group from './views/clue_group.vue';
+import add_user from './views/add_user.vue';
+import user from './views/user.vue';
 
 /**header 组件**/
 //import indexHeader from './components/header/indexHeader.vue';
@@ -19,6 +21,8 @@ export default new Router({
         {path: "/home",name: "home",component: Home},
         {path:"/index", name:"index",component:index},
         {path:"/clue",name:"clue",component:clue},
+        {path:"/add_user",name:"add_user",component:add_user},
+        {path:"/user",name:"add_user",component:user},
         {
             path: "/",
             name: "login",
