@@ -7,7 +7,7 @@
         </div>
         <van-cell-group>
             <van-cell is-link >
-            <div slot="title" border="1px solid">
+            <div slot="title" border="1px solid" @click="jump">
                 <i class="fa fa-eercast fa-2x xiansuo_f" aria-hidden="true"></i>
                 <span class="custom-text">线索</span>
             </div>
@@ -96,6 +96,11 @@
         data() {
             return {
 
+            }
+        },
+        methods:{
+            jump(){
+                this.$router.push("/clue")
             }
         }
     }
