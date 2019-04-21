@@ -15,15 +15,7 @@ export default new Router({
     //mode: "history",
     //base: process.env.BASE_URL,
     routes: [
-        { path: "/", name: "login",component: Login},
-        {path: "/home",name: "home",component: Home},
-        {path:"/index", name:"index",component:index},
-        {path:"/clue",name:"clue",component:clue},
-        {
-            path: "/",
-            name: "login",
-            component: Login
-        },
+        {path: "/", name: "login",component: Login},
         {
             path: "/home",
             name: "home",
@@ -50,8 +42,6 @@ export default new Router({
                 }
             ]
         },
-        //{path: "/index", name: "index", component: index},
-        //{path: "/clue", name: "clue", component: clue},
         {path:"/clue_group",name:"clue_group",component:clue_group},
     ]
 });
