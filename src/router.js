@@ -21,8 +21,6 @@ export default new Router({
         {path: "/home",name: "home",component: Home},
         {path:"/index", name:"index",component:index},
         {path:"/clue",name:"clue",component:clue},
-        {path:"/add_user",name:"add_user",component:add_user},
-        {path:"/user",name:"add_user",component:user},
         {
             path: "/",
             name: "login",
