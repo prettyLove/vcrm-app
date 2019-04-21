@@ -27,18 +27,26 @@
                 </div>
             </van-cell>
         </van-cell-group>
+     <van-popup v-model="pshow" position="top" :overlay="false">
+       <add_user></add_user>
+     </van-popup>
     </div>
 </template>
 <script>
-import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,Search} from 'vant';
+import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,Search,Popup} from 'vant';
+import add_user from './add_user.vue';
 export default {
      components:{
         [Cell.name]:Cell,[CellGroup.name]:CellGroup,[Row.name]:Row,[Col.name]:Col,
         [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,[Search.name]:Search,
+        [Popup.name]:Popup,
+        add_user
+
     },
     data(){
        return{
-        show:false
+        show:false,
+        pshow:false
        }
     },
     methods:{
@@ -48,7 +56,10 @@ export default {
         },
          beforeClose(action,done) {
             if(action=='confirm'){
-                this.$router.push('/add_user')
+              //  this.$router.push('/add_user')
+               this.show=false;
+               this.pshow=true;
+              
             }else{
                 done();
             }
