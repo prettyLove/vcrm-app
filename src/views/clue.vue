@@ -86,7 +86,9 @@
         },
         methods:{
             jump(){
-               this.$router.push("/index");
+               //this.$router.push("/index");
+                //这里不能写死，应该根据路由的历史记录进行回退
+                this.$router ? this.$router.back() : window.history.back()
             },
             gjump(){
                 this.$router.push("/clue_group")
