@@ -5,7 +5,7 @@ import Home from './views/Home.vue';
 import index from './views/index.vue';
 import clue from './views/clue.vue';
 import clue_group from './views/clue_group.vue';
-//import add_user from './views/add_user.vue';
+import add_user from './views/add_user.vue';
 import user from './views/user.vue';
 
 /**header 组件**/
@@ -32,24 +32,26 @@ export default new Router({
                     path: 'index',
                     name: 'index',
                     component: index,
-                    // redirect: '/home/indexHeader/index',
-                    // children:[
-                    //     {
-                    //         path: 'index',
-                    //         name: 'index',
-                    //         component: index
-                    //     }
-                    // ]
                 },
                 {
                     path: 'clue',
                     name: 'clue',
                     component: clue
+                },
+                {
+                    path: 'clue_group',
+                    name: 'clue_group',
+                    component: clue_group
+                },
+                {
+                    path:'user',
+                    name:'user',
+                    component:user,
                 }
             ]
         },
         {path: "/user", name: "user", component: user},
-
-        {path:"/clue_group",name:"clue_group",component:clue_group},
+        {path:'/add_user',name:'add_user',component:add_user},
+        // {path:"/clue_group",name:"clue_group",component:clue_group},
     ]
 });

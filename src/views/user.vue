@@ -19,34 +19,53 @@
                 left-icon="search"
             />
         </van-cell-group>
+        <van-popup v-model="pshow" position="top" :overlay="false">
+        <add_user @add='add' @back='back'></add_user>
+        </van-popup>
+        <vant-cell-group>
+             <van-cell is-link >
+            <div slot="title" border="1px solid">
+                <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> 
+                <span class="custom-text">客户</span>
+            </div>
+            </van-cell>
+        </vant-cell-group>
         <van-cell-group >
              <van-cell is-link>
                 <div slot="title" border="1px solid" @click="jump">
-                    <i class="fa fa-address-book-o fa-2x" aria-hidden="true"></i>
-                    <span class="custom-text">线索</span>
+                    <i class="fa fa-users fa-2x coment_f" aria-hidden="true"></i>
+                    <span class="custom-text">分组</span>
                 </div>
             </van-cell>
         </van-cell-group>
-     <van-popup v-model="pshow" position="top" :overlay="false">
-       <add_user></add_user>
-     </van-popup>
+        <div class="cao_style">最近操作</div>
+        <van-cell-group v-for="(item,i) of list" :key="i">
+             <van-cell>
+                <div slot="title" border="1px solid">
+                    <i class="fa fa-users fa-2x coment_f" aria-hidden="true"></i>
+                    <span class="custom-text">{{item.uname}}</span>
+                </div>
+            </van-cell>
+        </van-cell-group>
+       
     </div>
 </template>
 <script>
-import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,Search,Popup} from 'vant';
+import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,Search,Popup,DatetimePicker} from 'vant';
 import add_user from './add_user.vue';
 export default {
      components:{
         [Cell.name]:Cell,[CellGroup.name]:CellGroup,[Row.name]:Row,[Col.name]:Col,
         [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,[Search.name]:Search,
-        [Popup.name]:Popup,
+        [Popup.name]:Popup,[DatetimePicker.name]:DatetimePicker,
         add_user
 
     },
     data(){
        return{
         show:false,
-        pshow:false
+        pshow:false,
+        list:[],
        }
     },
     methods:{
@@ -54,15 +73,22 @@ export default {
         showDialog(){
             this.show=true;
         },
-         beforeClose(action,done) {
-            if(action=='confirm'){
-              //  this.$router.push('/add_user')
-               this.show=false;
-               this.pshow=true;
-              
-            }else{
-                done();
-            }
+        beforeClose(action,done) {
+        if(action=='confirm'){
+            //  this.$router.push('/add_user')
+            this.show=false;
+            this.pshow=true;
+        
+            
+        }
+        done()},
+        add(obj){
+            this.pshow=false;
+            this.list.push(obj);
+            console.log(this.list);
+        },
+        back(){
+            this.pshow=false;
         }
     },
     mounted() {//动态设置单个组件页面的背景颜色
@@ -83,6 +109,17 @@ export default {
   .van-cell__value{
       display: flex;
   }
+  .van-cell__title{
+      display: flex;
+  }
+  .cao_style{
+      text-align: left;
+      /* padding-left: 15px; */
+      font-size: 14px;
+      padding: 10px 0px 10px 16px;
+      border-top:0.8px solid #e8e8e8;
+      border-bottom:0.8px solid #e8e8e8;
+  }
   
 </style>
 <style>
@@ -100,8 +137,15 @@ export default {
       margin-bottom: 10px
   }
   .van-cell__value--alone{
-      display: flex
+      display: flex；   
   }
+  .van-cell[data-v-98090446] {
+    padding-top: 0.34667rem!important;
+    padding-bottom: 0.34667rem!important;
+}
+.van-field__left-icon{
+    margin-left: 10px!important;
+}
 
 </style>
 

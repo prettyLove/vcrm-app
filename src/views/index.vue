@@ -13,6 +13,12 @@
             </div>
             </van-cell>
             <van-cell is-link >
+            <div slot="title" border="1px solid" @click="jump2">
+                <i class="fa fa-address-card fa-2x coment_f" aria-hidden="true"></i>
+                <span class="custom-text">联系人</span>
+            </div>
+            </van-cell>
+            <van-cell is-link >
             <div slot="title" border="1px solid">
                 <i class="fa fa-search-minus fa-2x xscha_f" aria-hidden="true"></i>
                 <span class="custom-text">线索查重</span>
@@ -34,12 +40,6 @@
             <div slot="title" border="1px solid">
                 <i class="fa fa-address-book-o fa-2x hetong_f" aria-hidden="true"></i>
                 <span class="custom-text">合同</span>
-            </div>
-            </van-cell>
-            <van-cell is-link >
-            <div slot="title" border="1px solid">
-                <i class="fa fa-address-card fa-2x coment_f" aria-hidden="true"></i>
-                <span class="custom-text">联系人</span>
             </div>
             </van-cell>
         </van-cell-group>
@@ -101,6 +101,9 @@
         methods:{
             jump(){
                 this.$router.push("/clue")
+            },
+            jump2(){
+                this.$router.push("/user")
             }
         }
     }

@@ -234,17 +234,11 @@
     .vux-header .vux-header-left {
         color: #fff !important;
     }
-      .bg_h{
+    .bg_h{
        background-color: #26a2ff!important; 
   
     }
     .van-nav-bar__arrow,.van-nav-bar__title,.van-nav-bar__text,.van-icon-search{
         color:#fff!important;
     }
-
-
-    /* [data-v-7c4bc026]{
-        background-color: #23ade3;
-    }
-     */
 </style>

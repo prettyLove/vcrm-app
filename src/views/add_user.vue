@@ -1,7 +1,16 @@
 <template>
     <div class="add_user">
          <div  @click="jump" >
-            <van-nav-bar title="添加客户" left-text="返回" left-arrow  right-text="保存" right-arrow class="bg_h">
+            <van-nav-bar 
+                title="添加客户" 
+                left-text="返回" 
+                left-arrow  right-text="保存" 
+                right-arrow class="bg_h"
+                @click-right="save"  
+                @click-left="back">
+                <!-- @click-right="save"从add_user子组件保存跳转到user父组件
+                并携带参数obj，
+                 -->
                 <!-- <van-icon name="search" slot="right" /> -->
             </van-nav-bar>
         </div>
@@ -34,6 +43,8 @@
                         placeholder="客户生日"
                         rows="1"
                         autosize
+                        @focus="showPick"
+                        @blur="cancel"
                     />
                 </van-cell-group>
             </van-col> 
@@ -72,32 +83,77 @@
                 left-icon="plus"
                 autofocus 
             />
+    
+            <van-popup v-model="pickShow" position="bottom" :overlay="false">
+                <van-datetime-picker
+                    v-model="currentDate"
+                    type="date"
+                    :min-date="minDate"
+                    @confirm='getDate'
+                    @cancel='cancel'
+                />
+            </van-popup>
+          
+          
+            
         </van-cell-group> 
     </div>
 </template>
 <script>
-import { Cell, CellGroup,Row, Col,Field,Icon,NavBar } from 'vant';
+import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,DatetimePicker,Popup } from 'vant';
+import { constants } from 'crypto';
 export default {
     components:{
         [Cell.name]:Cell,[CellGroup.name]:CellGroup,[Row.name]:Row,[Col.name]:Col,
-        [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,
-    },
+        [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,[DatetimePicker.name]:DatetimePicker 
+        ,[Popup.name]:Popup ,
+   },
     data(){
        return{
            uname:'',
-           sex:'',
-           birthday:'',
-           phone:'',
-           email:'',
-           addr:'',
-           group:'',
-           circle:'',
+            sex:'',
+            birthday:'',
+            phone:'',
+            email:'',
+            addr:'',
+            group:'',
+            circle:'',
+            currentDate:'',
+            minDate:new Date(2018,2,1),
+            pickShow:false
        }
     },
     methods:{
         jump(){
 
         },
+        save(){
+            let obj={   uname:this.uname,
+                        sex:this.sex,
+                        birthday:this.birthday,
+                        phone:this.phone,
+                        email:this.email,
+                        addr:this.addr,
+                        group:this.group,
+                        circle:this.circle,
+                        currentDate:this.currentDate,
+            };
+            // console.log(this.uname);
+            this.$emit('add',obj);
+        },
+        back(){
+            this.$emit('back');
+        },
+        showPick(){
+            this.pickShow=true;
+        },
+        getDate(val){
+            this.birthday=val.toLocaleDateString();
+            this.pickShow=false;
+        },
+        cancel(){
+            this.pickShow=false;
+        }
     }
 
 }
