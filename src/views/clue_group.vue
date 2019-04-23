@@ -10,6 +10,8 @@
         </van-cell-group>
         <!-- 已封装好的组件 -->
         <clueg></clueg>
+        <!-- van-cell-group 模板，通过v-for循环创建列表
+         -->
         <van-cell-group v-for="(item,i) of users" :key="i">
             <van-cell is-link class="text_l">
             <div slot="title" border="1px solid" class="bf">
@@ -45,6 +47,7 @@ export default {
         },
     data(){
         return{
+            //data数据，可通过遍历动态绑定到指定的位置
             users:[
                 {'name':'张三',img:'images/login/01.jpg',number:0},
                 {'name':'李四',img:'images/login/bg.jpg',number:0},
@@ -71,6 +74,8 @@ export default {
     beforeDestroy() {
         document.querySelector('body').removeAttribute('style')
     },
+    //使用过滤器，生成一个0~500之前的数返回出去或者可以在created()阶段，
+    //通过循环几次就生成几个随机数
     filters:{
         random(){
             return Math.ceil(Math.random()*500);

@@ -17,45 +17,44 @@
             <van-field
                 placeholder="请输入要搜索的关键字"
                 left-icon="search"
+                v-model="phone"
             />
         </van-cell-group>
         <van-popup v-model="pshow" position="top" :overlay="false">
         <add_user @add='add' @back='back'></add_user>
         </van-popup>
-        <vant-cell-group>
-             <van-cell is-link >
+        <van-cell is-link >
             <div slot="title" border="1px solid">
                 <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> 
                 <span class="custom-text">客户</span>
             </div>
-            </van-cell>
-        </vant-cell-group>
-        <van-cell-group >
-             <van-cell is-link>
-                <div slot="title" border="1px solid" @click="jump">
-                    <i class="fa fa-users fa-2x coment_f" aria-hidden="true"></i>
-                    <span class="custom-text">分组</span>
-                </div>
-            </van-cell>
-        </van-cell-group>
+        </van-cell>
+        <van-cell is-link>
+            <div slot="title" border="1px solid" >
+                <i class="fa fa-users fa-2x " aria-hidden="true"></i>
+                <span class="custom-text">分组</span>
+            </div>
+       </van-cell>
         <div class="cao_style">最近操作</div>
-        <van-cell-group v-for="(item,i) of list" :key="i">
-             <van-cell>
-                <div slot="title" border="1px solid">
-                    <i class="fa fa-users fa-2x coment_f" aria-hidden="true"></i>
-                    <span class="custom-text">{{item.uname}}</span>
-                </div>
+     
+        <van-cell-group  v-for="(item,i) of list" :key="i">
+            <van-cell class="d_flex">
+            <div slot="title" border="1px solid" class="bf">
+                <img :src="item.img" style="width:20%" class="img">
+                <span class="custom-text" v-html="item.uname"></span>
+            </div>
+            <div>{{item.birthday}}</div>
             </van-cell>
         </van-cell-group>
        
     </div>
 </template>
 <script>
-import { Cell, CellGroup,Row, Col,Field,Icon,NavBar,Search,Popup,DatetimePicker} from 'vant';
+import { Row,Cell,CellGroup,Col,Field,Icon,NavBar,Search,Popup,DatetimePicker} from 'vant';
 import add_user from './add_user.vue';
 export default {
      components:{
-        [Cell.name]:Cell,[CellGroup.name]:CellGroup,[Row.name]:Row,[Col.name]:Col,
+        [Row.name]:Row,[Cell.name]:Cell,[CellGroup.name]:CellGroup,[Col.name]:Col,
         [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,[Search.name]:Search,
         [Popup.name]:Popup,[DatetimePicker.name]:DatetimePicker,
         add_user
@@ -65,8 +64,17 @@ export default {
        return{
         show:false,
         pshow:false,
-        list:[],
+        list:[{img:'images/login/01.jpg',uname:'张三',birthday:'2018/1/10'},
+              {img:'images/login/01.jpg',uname:'李四',birthday:'2017/8/07'},
+              {img:'images/login/01.jpg',uname:'王武',birthday:'2017/5/06'},
+        ],
+        phone:'',
        }
+    },
+    watch:{
+        phone(){
+          
+        }
     },
     methods:{
         jump(){},
@@ -84,6 +92,7 @@ export default {
         done()},
         add(obj){
             this.pshow=false;
+            obj.img='images/login/01.jpg' ;
             this.list.push(obj);
             console.log(this.list);
         },
@@ -106,6 +115,7 @@ export default {
       margin-left: 15px;
       margin-right: 15px
   }
+  /* 受van-popup影响，样式需重新设置覆盖，如下 */
   .van-cell__value{
       display: flex;
   }
@@ -120,7 +130,24 @@ export default {
       border-top:0.8px solid #e8e8e8;
       border-bottom:0.8px solid #e8e8e8;
   }
+  .img{
+       border-radius: 50%;
+       padding-right: 10px;
+       height: 20px;
+   }
+   .bf{
+    display: flex!important;
+    align-items: space-between!important;
+   }
+   .vant-icon{
+       color:#fff;
+   }
+   .van-cell__value{
+       justify-content: flex-end;
+   }
   
+   
+   
 </style>
 <style>
 .bg_h{
@@ -146,6 +173,23 @@ export default {
 .van-field__left-icon{
     margin-left: 10px!important;
 }
+.van-field__left-icon{
+       background-color: #fff;
+       border-radius: 15%!important;
+       color:#666;  
+   }
+   .van-cell__value--alone{
+       display: flex;
+   }
+   .d_flex{
+       display: flex!important;
+       justify-content: space-between!important;
+   }
+   .fa-2x{
+       font-size: 20px;
+       padding-right:8px;
+       color:#ff976a;
+   }
 
 </style>
 

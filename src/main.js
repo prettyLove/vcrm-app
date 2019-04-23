@@ -10,11 +10,10 @@ import 'font-awesome/css/font-awesome.min.css'
 
 Vue.config.productionTip = false;
 import {Dialog, Toast} from 'vant';
-import {Cell, CellGroup} from 'vant';
+import {Row,Cell, CellGroup} from 'vant';
 Vue.use(Dialog)
    .use(Toast);
-Vue.use(Cell)
-   .use(CellGroup);
+Vue.use(Cell).use(CellGroup);
 new Vue({
     router,
     store,
