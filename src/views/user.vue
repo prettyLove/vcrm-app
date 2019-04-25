@@ -111,6 +111,7 @@ export default {
 }
 </script>
 <style scoped>
+.bg_h {background-color: #23ade3 !important;}
   .margin_lr{
       margin-left: 15px;
       margin-right: 15px

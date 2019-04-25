@@ -104,6 +104,8 @@
     }
 </script>
 <style scoped>
+   .bg_h {background-color: #23ade3 !important;}
+
     .bg {
         background-color: #eee;
     }

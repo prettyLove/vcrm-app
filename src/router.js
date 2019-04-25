@@ -34,7 +34,7 @@ export default new Router({
                     component: index,
                 },
                 {
-                    path: 'clue',
+                    path: '/home/clue',
                     name: 'clue',
                     component: clue
                 },
@@ -44,7 +44,7 @@ export default new Router({
                     component: clue_group
                 },
                 {
-                    path:'user',
+                    path:'/home/user',
                     name:'user',
                     component:user,
                 }

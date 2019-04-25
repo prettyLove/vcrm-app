@@ -83,7 +83,7 @@ export default {
     }
 }
 </script>
-<style scoped>
+<style   scoped>
     .vux-header {
         background-color: #23ade3 !important;
     }
