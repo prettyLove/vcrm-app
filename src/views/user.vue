@@ -5,6 +5,7 @@
             <van-nav-bar title="添加客户" left-text="返回" left-arrow  right-text="保存" right-arrow class="bg_h">
                 <van-icon name="user-o" slot="right" @click="showDialog"/>
             </van-nav-bar>
+            <!-- 添加用户弹出框 -->
             <van-dialog
                 v-model="show"
                 title="添加用户？"
@@ -20,9 +21,7 @@
                 v-model="phone"
             />
         </van-cell-group>
-        <van-popup v-model="pshow" position="top" :overlay="false">
-        <add_user @add='add' @back='back'></add_user>
-        </van-popup>
+    
         <van-cell is-link >
             <div slot="title" border="1px solid">
                 <i class="fa fa-user-circle fa-2x" aria-hidden="true"></i> 
@@ -36,27 +35,34 @@
             </div>
        </van-cell>
         <div class="cao_style">最近操作</div>
-     
+        <!-- 用户列表，动态创建 -->
         <van-cell-group  v-for="(item,i) of list" :key="i">
-            <van-cell class="d_flex">
-            <div slot="title" border="1px solid" class="bf">
-                <img :src="item.img" style="width:20%" class="img">
-                <span class="custom-text" v-html="item.uname"></span>
+            <div @click="editor(item)">
+                <van-cell class="d_flex">
+                <div slot="title" border="1px solid" class="bf">
+                    <img :src="item.img" style="width:20%" class="img">
+                    <span class="custom-text" v-html="item.uname"></span>
+                </div>
+                <div>{{item.birthday}}</div>
+            <!-- <van-button type="primary" @click="updateUser(item)">修改</van-button> -->
+                </van-cell>
             </div>
-            <div>{{item.birthday}}</div>
-            </van-cell>
         </van-cell-group>
+
+        <van-popup v-if="pshow" v-model="pshow" position="top" :overlay="false">
+        <add_user @add='add' @deleteUser="deleteUser" @updateSave='updateSave' @back='back' :user="this.user" :ptitle="this.ptitle"></add_user>
+        </van-popup>
        
     </div>
 </template>
 <script>
-import { Row,Cell,CellGroup,Col,Field,Icon,NavBar,Search,Popup,DatetimePicker} from 'vant';
-import add_user from './add_user.vue';
+import { Row,Cell,CellGroup,Col,Field,Icon,NavBar,Search,Popup,DatetimePicker,Button} from 'vant';
+import add_user from './add_user';
 export default {
      components:{
         [Row.name]:Row,[Cell.name]:Cell,[CellGroup.name]:CellGroup,[Col.name]:Col,
         [Field.name]:Field,[Icon .name]:Icon,[NavBar.name]:NavBar,[Search.name]:Search,
-        [Popup.name]:Popup,[DatetimePicker.name]:DatetimePicker,
+        [Popup.name]:Popup,[DatetimePicker.name]:DatetimePicker,[Button.name]:Button,
         add_user
 
     },
@@ -64,11 +70,14 @@ export default {
        return{
         show:false,
         pshow:false,
-        list:[{img:'images/login/01.jpg',uname:'张三',birthday:'2018/1/10'},
-              {img:'images/login/01.jpg',uname:'李四',birthday:'2017/8/07'},
-              {img:'images/login/01.jpg',uname:'王武',birthday:'2017/5/06'},
+        list:[{id:'1',img:'images/login/01.jpg',uname:'张三',birthday:'2018/1/10'},
+              {id:'2',img:'images/login/01.jpg',uname:'李四',birthday:'2017/8/07'},
+              {id:'3',img:'images/login/01.jpg',uname:'王武',birthday:'2017/5/06'},
         ],
         phone:'',
+        user:{},
+        ptitle:''
+        
        }
     },
     watch:{
@@ -84,20 +93,58 @@ export default {
         beforeClose(action,done) {
         if(action=='confirm'){
             //  this.$router.push('/add_user')
+            this.ptitle="添加用户";
+            this.user={};
             this.show=false;
             this.pshow=true;
-        
             
         }
         done()},
+        //添加用户方法
         add(obj){
             this.pshow=false;
             obj.img='images/login/01.jpg' ;
             this.list.push(obj);
             console.log(this.list);
+            console.log("add==="+obj);
+        },
+        //修改用户方法
+        updateSave(obj){
+            console.info("修改保存");
+            //修改List集合里面配置的值
+            for(var i=0;i<this.list.length;i++){
+                 var tuser=this.list[i];
+                 if(tuser.id==obj.id){
+                     console.info("匹配用户成功");
+                     this.list[i]=obj;
+                 }
+            }
+            console.log(obj);
+        this.pshow=false;
+        },
+        //删除用户方法
+        deleteUser(id){
+            console.log("父组件删除用户");
+            for(var i=0;i<this.list.length;i++){
+                var old_id=this.list[i];
+              if(old_id.id==id){
+               console.log("ID相同，执行删除");
+               this.list.splice(i, 1);
+               this.pshow=false;
+            }
+            }
+            
         },
         back(){
             this.pshow=false;
+        },
+        editor(user){
+            this.user=user;
+            console.log(this.user);
+            this.ptitle="修改用户";
+            this.show=false;
+            this.pshow=true;
+            console.log("用户名"+user);
         }
     },
     mounted() {//动态设置单个组件页面的背景颜色
